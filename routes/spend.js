@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
 
         if (spendablePoints > 0) {
             // Deduct points and log the spend
-            spendLog.push({ payer, points: -spendablePoints });
+            addToSpendLog(payer, -spendablePoints)
             transaction.points -= spendablePoints;
             payerBalances[payer] -= spendablePoints; // Update payer balance
             pointsToSpend -= spendablePoints;
@@ -55,6 +55,7 @@ router.post('/', (req, res) => {
             // If transaction is negative, adjust the remaining points to spend
             pointsToSpend += Math.abs(transaction.points);
 			transaction.points -= spendablePoints;
+            addToSpendLog(payer, -spendablePoints)
         }
 
     }
@@ -71,7 +72,21 @@ router.post('/', (req, res) => {
     }
 
     res.status(200).json(spendLog);
+
+    function addToSpendLog(payer, points) {
+        // Check if the payer already exists in the spendLog
+        const existingEntry = spendLog.find(entry => entry.payer === payer);
+    
+        if (existingEntry) {
+            // If the payer exists, update the points
+            existingEntry.points += points;
+        } else {
+            // If the payer does not exist, add a new entry
+            spendLog.push({ payer, points });
+        }
+    }
 });
 
-module.exports = router;
 
+
+module.exports = router;
