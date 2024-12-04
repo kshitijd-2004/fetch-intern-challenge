@@ -1,33 +1,32 @@
-### 1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+1. Why did you choose the tools, libraries, and language you used for the coding exercise?
 
-I chose **JavaScript** and **Node.js** for this exercise because they are widely used and well-supported for building APIs. Node.js is lightweight and efficient, making it a great choice for handling RESTful API requests. It's also easy to learn and set up, which allowed me to focus on implementing the solution without worrying about unnecessary complexity.
+I chose JavaScript and Node.js for this exercise because they are widely used and well-supported for building APIs. Node.js is lightweight and efficient, making it a great choice for handling RESTful API requests. It's also easy to learn and set up, which allowed me to focus on implementing the solution without worrying about unnecessary complexity.
 
-I used **Express.js** because it’s straightforward and has a minimal learning curve while offering the tools needed to build routes and manage requests efficiently. Using in-memory storage for transactions was a deliberate choice to keep the implementation simple and focus on the logic required by the problem. This approach avoids external dependencies like a database, keeping the project lightweight and suitable for a coding challenge.
+I used Express.js because it’s straightforward and has a minimal learning curve while offering the tools needed to build routes and manage requests efficiently. Using in-memory storage for transactions was a deliberate choice to keep the implementation simple and focus on the logic required by the problem. This approach avoids external dependencies like a database, keeping the project lightweight and suitable for a coding challenge.
 
-### 2. What are the advantages and disadvantages of your solution?
+2. What are the advantages and disadvantages of your solution?
 
-#### **Advantages**:
-- **Simple and Clear**: The solution is easy to understand and modify. I structured the code with separate routes for `add`, `spend`, and `balance`, making it modular and easy to extend.
-- **Chronological Validation**: I implemented logic to ensure that no payer’s balance goes negative at any point, even if the transactions are added in a non-chronological order. The `add` endpoint temporarily inserts the new transaction, sorts all transactions by their timestamps, and checks the running balance to confirm it never drops below zero. This ensures accuracy regardless of the order in which transactions are submitted.
-- **Quick Setup**: The solution doesn't require a database or complex configuration, making it faster to set up and test. It's suitable for the scope of this exercise while still providing accurate results.
-- **Correct Spending Logic**: The `spend` endpoint strictly follows the rule of deducting points from the oldest transactions first and ensures no payer’s balance ever goes negative, even during point deductions.
+Advantages:
+- Simple and Clear: The solution is easy to understand and modify. I structured the code with separate routes for add, spend, and balance, making it modular and easy to extend.
+- Chronological Validation: I implemented logic to ensure that no payer’s balance goes negative at any point, even if the transactions are added in a non-chronological order. The add endpoint temporarily inserts the new transaction, sorts all transactions by their timestamps, and checks the running balance to confirm it never drops below zero. This ensures accuracy regardless of the order in which transactions are submitted.
+- Quick Setup: The solution doesn't require a database or complex configuration, making it faster to set up and test. It's suitable for the scope of this exercise while still providing accurate results.
+- Correct Spending Logic: The spend endpoint strictly follows the rule of deducting points from the oldest transactions first and ensures no payer’s balance ever goes negative, even during point deductions.
 
-#### **Disadvantages**:
-- **No Persistence**: The use of an in-memory array for transactions means that all data is lost when the server stops. In a real-world scenario, this would need to be replaced by a database to ensure persistence.
-- **Limited Scalability**: Because transactions are stored in memory, the solution is not suited for a large number of users or transactions.
-- **Concurrency Issues**: The solution doesn’t handle simultaneous requests, which could lead to race conditions or data inconsistency.
-- **Basic Functionality**: The solution focuses on the required functionality but doesn’t include features like user authentication, error logging, or rate limiting, which would be essential in a production-grade system.
+Disadvantages:
+- No Persistence: The use of an in-memory array for transactions means that all data is lost when the server stops. In a real-world scenario, this would need to be replaced by a database to ensure persistence.
+- Limited Scalability: Because transactions are stored in memory, the solution is not suited for a large number of users or transactions.
+- Concurrency Issues: The solution doesn’t handle simultaneous requests, which could lead to race conditions or data inconsistency.
+- Basic Functionality: The solution focuses on the required functionality but doesn’t include features like user authentication, error logging, or rate limiting, which would be essential in a production-grade system.
 
-### 3. What has been a favorite school/personal project thus far? What about it that challenged you?
+3. What has been a favorite school/personal project thus far? What about it that challenged you?
 
-One of my favorite projects has been my **Parking Management System**, which I developed to streamline parking space allocation and user management.
+One of my favorite projects has been my Parking Management System, which I developed to streamline parking space allocation and user management.
 
-In this project, I designed and implemented a full stack application using a **React frontend**, a **Node.js and Express backend**, and a **MySQL database**. The system included features like user registration, parking slot allocation based on availability, and special considerations for handicapped users. The API was built to support real time updates, allowing seamless interaction between users and the database.
+In this project, I designed and implemented a full stack application using a React frontend, a Node.js and Express backend, and a MySQL database. The system included features like user registration, parking slot allocation based on availability, and special considerations for handicapped users. The API was built to support real time updates, allowing seamless interaction between users and the database.
 
-#### **Challenges**:
-1. **Database Design**: Crafting a schema that efficiently supported attributes like `status` (active/inactive) and `handicap` required significant thought and testing to ensure flexibility and reliability.
-2. **Frontend Backend Communication**: Setting up robust communication using **Axios** and managing state in the frontend posed challenges as the complexity of user interactions increased.
-3. **Edge Case Handling**: Accounting for scenarios like simultaneous parking requests or removing inactive users required detailed testing and thoughtful logic implementation.
+Challenges:
+1. Database Design: Crafting a schema that efficiently supported attributes like status (active/inactive) and handicap required significant thought and testing to ensure flexibility and reliability.
+2. Frontend Backend Communication: Setting up robust communication using Axios and managing state in the frontend posed challenges as the complexity of user interactions increased.
+3. Edge Case Handling: Accounting for scenarios like simultaneous parking requests or removing inactive users required detailed testing and thoughtful logic implementation.
 
 This project challenged me to integrate multiple technologies, refine my problem solving skills, and think critically about user experience and application performance. It’s one of the projects I’m most proud of because of the real world applicability and technical depth it involved.
-
