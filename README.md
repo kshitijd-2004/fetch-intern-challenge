@@ -93,6 +93,29 @@ The server will start on http://localhost:8000.
       "MILLER COORS": 5300
     }
     ```
+## Running and Testing the API on Linux
+
+1. **Start the Server**
+   
+   ```bash
+   npm start
+   ```
+2. **Open a new terminal to make API calls:** If you're running the server in a Linux environment, you need to use the server's IP address. Retrieve it with the following command:
+   
+   ```bash
+   hostname -I
+   ```
+   This will return the server's IP address (the first IP in the list. e.g., 192.168.1.100). Use this IP address in your API calls instead of localhost.
+
+3. **Example of making an API call to add a transaction:**
+   
+   ```bash
+   curl -X POST http://192.168.1.100:8000/add \
+   -H "Content-Type: application/json" \
+   -d '{"payer":"DANNON","points":500,"timestamp":"2022-10-31T10:00:00Z"}'
+   ```
+
+
 ## Folder Structure
 
   ```bash
