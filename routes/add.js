@@ -31,8 +31,6 @@ router.post('/', (req, res) => {
 
     // Add the new transaction if validation passes
     transactions.push({ payer, points, timestamp });
-    console.log('Current Transactions:', transactions); // Debugging log
-
     res.status(200).send('Points added successfully');
 });
 
